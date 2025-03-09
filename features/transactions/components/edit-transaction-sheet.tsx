@@ -10,7 +10,6 @@ import { z } from 'zod'
 import { Loader2 } from 'lucide-react'
 import { useConfirm } from '@/hooks/use-confirm'
 import { useOpenTransaction } from '../hooks/use-open-transactions'
-import { useGetTransaction } from '../api/use-get-transaction'
 import { TransactionForm } from './transaction-form'
 import { useEditTransaction } from '../api/use-edit-transaction'
 import { useDeleteTransaction } from '../api/use-delete-transaction'
@@ -19,6 +18,7 @@ import { useCreateAccount } from '@/features/accounts/api/use-create-account'
 import { useGetAccounts } from '@/features/accounts/api/use-get-accounts'
 import { useCreateCategory } from '@/features/categories/api/use-create-category'
 import { useGetCategories } from '@/features/categories/api/use-get-categories'
+import { useGetTransaction } from '../api/use-get-transaction'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const formSchema = insertTransactionSchema.omit({
@@ -103,7 +103,7 @@ export const EditTransactionSheet = () => {
                         Edit Transaction
                     </SheetTitle>
                     <SheetDescription>
-                        Edit tyour existing transactions
+                        Edit your existing transactions
                     </SheetDescription>
                 </SheetHeader>
                 {isLoading
