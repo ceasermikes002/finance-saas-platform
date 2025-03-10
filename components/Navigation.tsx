@@ -44,10 +44,10 @@ const Navigation = () => {
     if (isMobile) {
         return (
             <Sheet open={isOpen} onOpenChange={()=>setIsOpen(!isOpen)}>
-                <SheetTrigger>
-                    <Button suppressHydrationWarning variant={'outline'} size={'sm'} className='font-normal bg-white/10 text-white hover:bg-white/20 hover:text-white border-none focus:visible:ring-transparent focus-visible:ring-white focus-visible:ring-opacity-50 outline-none focus:bg-white/30 transition'>
-                        <Menu size={4} />
-                    </Button>
+                <SheetTrigger asChild>
+                    <div className='cursor-pointer rounded-md px-3 py-2 font-normal bg-white/10 text-white hover:bg-white/20 hover:text-white border-none focus:visible:ring-transparent focus-visible:ring-white focus-visible:ring-opacity-50 outline-none focus:bg-white/30 transition'>
+                        <Menu size={16} />
+                    </div>
                 </SheetTrigger>
                 <SheetContent side={'left'} className='px-2'>
                     <nav className='flex flex-col gap-y-2 pt-6'>
