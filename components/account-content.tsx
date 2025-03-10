@@ -35,11 +35,11 @@ export const AccountContent = () => {
 
   
     return(
-        <div className='max-w-screen-2xl mx-auto w-full pb-10 -mt-24'>
+        <div className='max-w-screen-2xl mx-auto w-full pb-10 -mt-16'>
         <Card className='border-none drop-shadow-sm'>
           <CardHeader className='gap-y-2 lg:flex-row lg:items-center lg:justify-between'>
             <CardTitle className='text-xl line-clamp-1'>
-              AccountsPage
+              Accounts Page
             </CardTitle>
             <Button onClick={newAccount.onOpen} size={'sm'}>
               <PlusIcon className='size-4 mr-2' />
