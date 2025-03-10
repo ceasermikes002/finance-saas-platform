@@ -39,7 +39,7 @@ A modern, full-stack finance tracking application built with Next.js 14, Drizzle
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/ceasermikes002/finance-saas-platform.git
 ```
 
 2. Install dependencies:
