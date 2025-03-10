@@ -6,12 +6,13 @@ import { useSearchParams } from "next/navigation"
 import { FaPiggyBank } from "react-icons/fa"
 import { MdTrendingUp, MdTrendingDown } from "react-icons/md";
 import { DataCard, DataCardLoading } from "./data-card"
+import { Suspense } from "react"
 
 export const DataGrid = () => {
     const { data, isLoading } = useGetSummary()
     const params = useSearchParams()
-    const to = params.get('to') || undefined
-    const from = params.get('from') || undefined
+    const to = params?.get('to') || undefined
+    const from = params?.get('from') || undefined
 
     const dateRangeLabel = formatDateRange({ to, from })
 
@@ -50,5 +51,13 @@ export const DataGrid = () => {
                 dateRange={dateRangeLabel}
             />
         </div>
+    )
+}
+
+export function Data() {
+    return (
+        <Suspense>
+            <DataGrid/>
+        </Suspense>
     )
 }

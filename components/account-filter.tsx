@@ -11,14 +11,15 @@ import qs from 'query-string';
 import { useGetAccounts } from "@/features/accounts/api/use-get-accounts"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useGetSummary } from "@/features/summary/api/use-get-summary";
+import { Suspense } from "react";
 
 export const AccountFilter = () => {
     const router = useRouter()
     const pathname = usePathname()
     const params = useSearchParams()
-    const accountId = params.get("accountId") || 'all'
-    const from = params.get("from") || ''
-    const to = params.get("to") || ""
+    const accountId = params?.get("accountId") || 'all'
+    const from = params?.get("from") || ''
+    const to = params?.get("to") || ""
     const {
         data: accounts,
         isLoading: isLoadingAccounts,
@@ -38,9 +39,8 @@ export const AccountFilter = () => {
         if (newValue === 'all') {
             query.accountId = ""
         }
-
         const url = qs.stringifyUrl({
-            url: pathname,
+            url: pathname!,
             query,
         }, { skipNull: true, skipEmptyString: true})
 
@@ -71,5 +71,13 @@ export const AccountFilter = () => {
                 ))}
             </SelectContent>
         </Select>
+    )
+}
+
+export function AcctBar() {
+    return (
+        <Suspense>
+            <AccountFilter/>
+        </Suspense>
     )
 }

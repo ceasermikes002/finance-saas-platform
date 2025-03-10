@@ -4,9 +4,9 @@ import { useSearchParams } from 'next/navigation';
 
 export const useGetTransactions = () => {
     const params = useSearchParams()
-    const from = params.get('from') || ''
-    const to = params.get('to') || ''
-    const accountId = params.get('accountId') || ''
+    const from = params?.get('from') || ''
+    const to = params?.get('to') || ''
+    const accountId = params?.get('accountId') || ''
 
 
     const query = useQuery({

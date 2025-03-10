@@ -3,9 +3,8 @@
 
 import { format, subDays } from "date-fns";
 import { DateRange } from "react-day-picker";
-import { ChevronDown, Router } from "lucide-react";
-import { useGetSummary } from "@/features/summary/api/use-get-summary";
-import { cn, formatDateRange } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
+import { formatDateRange } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { Calendar } from "./ui/calendar";
 import {
@@ -15,14 +14,14 @@ import {
     PopoverClose,
 } from "@/components/ui/popover"
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import qs from "query-string"
 
 export const DateFilter = () => {
     const params = useSearchParams()
-    const accountId = params.get("accountId") || 'all'
-    const from = params.get("from") || ''
-    const to = params.get("to") || ""
+    const accountId = params?.get("accountId") || 'all'
+    const from = params?.get("from") || ''
+    const to = params?.get("to") || ""
 
     const defaultTo = new Date()
     const pathname = usePathname()
@@ -45,7 +44,7 @@ export const DateFilter = () => {
         }
         
         const url = qs.stringifyUrl({
-            url: pathname,
+            url: pathname!,
             query,
         }, { skipEmptyString: true, skipNull: true})
 
@@ -94,7 +93,7 @@ export const DateFilter = () => {
                     </PopoverClose>
                     <PopoverClose asChild>
                         <Button
-                        onClick={pushToUrl(date)}
+                        onClick={() => pushToUrl(date)}
                         disabled={!date?.from || !date?.to}
                         className="w-full"
                         >
@@ -104,5 +103,13 @@ export const DateFilter = () => {
                 </div>
             </PopoverContent>
         </Popover>
+    )
+}
+
+export function DateBar() {
+    return (
+        <Suspense>
+            <DateFilter/>
+        </Suspense>
     )
 }

@@ -24,7 +24,10 @@ export const DataCharts = () => {
 
             {/* Spending Pie Chart Section */}
             <div className="col-span-12 lg:col-span-4 bg-white rounded-lg shadow-md p-4">
-                <SpendingPie data={data?.categories} />
+                <SpendingPie data={data?.categories?.map(category => ({
+                    date: category.name,
+                    value: category.value
+                }))} />
             </div>
         </div>
     );

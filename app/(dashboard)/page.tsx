@@ -1,13 +1,11 @@
-"use client"
+import { RootPageContent } from "@/components/root-page-content";
+import { Suspense } from "react";
 
-import { DataCharts } from '@/components/data-charts';
-import { DataGrid } from '@/components/data-grid';
 export default function DashBoardPage() {
 
   return (
-    <div className='max-w-screen-2xl mx-auto w-full pb-10 -mt-24'>
-      <DataGrid/>
-      <DataCharts/>
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+    <RootPageContent/>
+  </Suspense>
   );
 }

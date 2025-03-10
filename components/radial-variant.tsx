@@ -6,7 +6,7 @@ import {
     RadialBarChart,
     ResponsiveContainer
 } from "recharts";
-import { formatCurrency, formatPercentage } from "@/lib/utils";
+import { formatCurrency } from "@/lib/utils";
 import { Categorytip } from "./category-tooltip";
 
 const COLORS = ["#0062FF", "#12C6FF", "#FF647F", "#FF9354"];
